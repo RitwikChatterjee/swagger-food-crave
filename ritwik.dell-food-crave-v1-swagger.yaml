@@ -78,19 +78,19 @@ paths:
         400:
           description: Response for successful request
           schema: 
-            $ref: 'response-status.schema'
+            $ref: './schema/response-status.schema'
         401:
           description: Response for successful request
           schema: 
-            $ref: '#/definitions/collection-response'
+            $ref: './schema/response-status.schema'
         404:
           description: Response for successful request
           schema: 
-            $ref: '#/definitions/collection-response'
+            $ref: './schema/response-status.schema'
         500:
           description: Response for successful request
           schema: 
-            $ref: '#/definitions/collection-response'
+            $ref: './schema/response-status.schema'
 
 
 definitions:
@@ -108,7 +108,7 @@ definitions:
       data: 
         type: "array"
         items: 
-          $ref: 'food-crave-restaurant.schema'
+          $ref: './schema/food-crave-restaurant.schema'
       response-status: 
-        $ref: 'response-status.schema'
+        $ref: './schema/response-status.schema'
         
