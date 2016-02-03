@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "required": [
+    "status",
+    "http-code"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "description": "Status of the request.",
+      "enum": [
+        "success",
+        "success with warnings",
+        "failure"
+      ]
+    },
+    "http-code": {
+      "type": "integer",
+      "description": "HTTP-Code being returned",
+      "enum": [
+        200,
+        400,
+        401,
+        404,
+        500
+      ]
+    },
+    "error-block": {
+      "$ref": "response-status-error-block.schema"
+    }
+  }
+}

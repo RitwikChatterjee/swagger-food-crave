@@ -1,0 +1,51 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Restaurant name"
+    },
+    "id": {
+      "type": "string",
+      "description": "Restaurant id"
+    },
+    "url": {
+      "type": "string",
+      "description": "restaurant  url"
+    },
+    "mobile_url": {
+      "type": "string",
+      "description": "restaurant mobile url"
+    },
+    "location": {
+      "description": "Location of the restaurant",
+      "$ref": "location"
+    },
+    "is_closed": {
+      "type": "boolean",
+      "description": "Whether the business has been permanently closed"
+    },
+    "display_phone": {
+      "type": "string",
+      "description": "restaurant phone number formatted for display"
+    },
+    "rating": {
+      "type": "number",
+      "description": "restaurant review ratings on Yelp"
+    },
+    "review_count": {
+      "type": "number",
+      "description": "number of reviews on Yelp"
+    },
+    "rating_img_url": {
+      "type": "string",
+      "description": "URL to star rating image for this restaurant"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "$ref": "category"
+      }
+    }
+  }
+}

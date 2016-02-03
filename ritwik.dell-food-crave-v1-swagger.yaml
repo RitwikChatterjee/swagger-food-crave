@@ -1,0 +1,114 @@
+swagger: '2.0'
+info:
+  version: v1
+  title: Food-Crave APIs
+  description: APIs for the Food Crave App - Swagger version
+  contact: 
+    name: ritwik@dell.com
+    
+  
+  
+host: ritwik-dell-test.apigee.net
+basePath: /food-crave/{version}
+schemes:
+  - http
+  - https
+
+consumes:
+  - application/xml
+  - application/json
+  
+produces:
+  - application/xml
+  - application/json
+
+tags:
+  - name: restaurants
+    description: Find restaurants of your choice
+    
+paths: 
+  /restaurants:
+    get:
+      tags:
+        - restaurants
+      summary: Collection of restaurants with the given search criteria
+      description: Collection of restaurants with the given search criteria
+      parameters:
+        - name: address
+          in: query
+          description: Address near which restaurant needs to be fetched
+          required: true
+          type: string
+        - name: food-pref
+          in: query
+          description: The food/cuisine preference of the user
+          required: false
+          type: string
+        - name: distance
+          in: query
+          description: The radial distance in kilometers (KMs) from the location from where to fetch the restaurants for
+          required: false
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 40
+          default: 40
+        - name: page-size
+          in: query
+          description: Number of restaurant details (or size of resultset) desired
+          required: false
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 15
+          default: 10
+        - name: offset
+          in: query
+          description: To fetch the next set of results, offset the result-set by this amount
+          required: false
+          type: integer
+          format: int32
+          minimum: 0
+          default: 0
+      responses:
+        200:
+          description: Response for successful request
+          schema: 
+            $ref: '#/definitions/collection-response'
+        400:
+          description: Response for successful request
+          schema: 
+            $ref: 'response-status.schema'
+        401:
+          description: Response for successful request
+          schema: 
+            $ref: '#/definitions/collection-response'
+        404:
+          description: Response for successful request
+          schema: 
+            $ref: '#/definitions/collection-response'
+        500:
+          description: Response for successful request
+          schema: 
+            $ref: '#/definitions/collection-response'
+
+
+definitions:
+  collection-response:
+    type: "object"
+    required: 
+      - "response-status"
+    properties: 
+      page-size: 
+        type: "number"
+      offset: 
+        type: "number"
+      total-records: 
+        type: "number"
+      data: 
+        type: "array"
+        items: 
+          $ref: 'food-crave-restaurant.schema'
+      response-status: 
+        $ref: 'response-status.schema'
+        
