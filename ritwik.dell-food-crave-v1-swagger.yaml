@@ -53,44 +53,21 @@ paths:
           minimum: 1
           maximum: 40
           default: 40
-        - name: page-size
-          in: query
-          description: Number of restaurant details (or size of resultset) desired
-          required: false
-          type: integer
-          format: int32
-          minimum: 1
-          maximum: 15
-          default: 10
-        - name: offset
-          in: query
-          description: To fetch the next set of results, offset the result-set by this amount
-          required: false
-          type: integer
-          format: int32
-          minimum: 0
-          default: 0
+        - $ref: '#/parameters/paging-size'
+        - $ref: '#/parameters/paging-limit'
       responses:
         200:
           description: Response for successful request
           schema: 
             $ref: '#/definitions/collection-response'
         400:
-          description: Response for successful request
-          schema: 
-            $ref: './schema/response-status.schema'
+          $ref: '#/responses/bad-request-error'
         401:
-          description: Response for successful request
-          schema: 
-            $ref: './schema/response-status.schema'
+          $ref: '#/responses/unauthorized-error'
         404:
-          description: Response for successful request
-          schema: 
-            $ref: './schema/response-status.schema'
+          $ref: '#/responses/not-found-error'
         500:
-          description: Response for successful request
-          schema: 
-            $ref: './schema/response-status.schema'
+          $ref: '#/responses/internal-error'
 
 
 definitions:
@@ -112,3 +89,42 @@ definitions:
       response-status: 
         $ref: './schema/response-status.schema'
         
+parameters:
+  paging-size:
+    name: page-size
+    in: query
+    description: Number of restaurant details (or size of resultset) desired
+    required: false
+    type: integer
+    format: int32
+    minimum: 1
+    maximum: 15
+    default: 10
+  paging-limit:
+    name: offset
+    in: query
+    description: To fetch the next set of results, offset the result-set by this amount
+    required: false
+    type: integer
+    format: int32
+    minimum: 0
+    default: 0
+
+responses:
+  bad-request-error:
+    description: Response for badly formed request
+    schema: 
+      $ref: './schema/response-status.schema'
+  unauthorized-error:
+    description: Response for unauthorized request
+    schema: 
+      $ref: './schema/response-status.schema'
+  not-found-error:
+    description: Response for requested resource not found
+    schema: 
+      $ref: './schema/response-status.schema'
+  internal-error:
+    description: Response for other internal error
+    schema: 
+      $ref: './schema/response-status.schema'
+  
