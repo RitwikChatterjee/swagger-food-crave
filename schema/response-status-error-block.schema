@@ -4,7 +4,7 @@
     "errors": {
       "type": "array",
       "items": {
-        "$ref": "error"
+        "$ref": "response-status-error.schema"
       }
     }
   }

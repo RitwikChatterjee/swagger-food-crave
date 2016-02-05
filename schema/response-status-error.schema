@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "required": [
+    "error-code",
+    "error-message",
+    "error-details"
+  ],
+  "properties": {
+    "error-code": {
+      "type": "string",
+      "description": "The particular error-code being returned"
+    },
+    "error-message": {
+      "type": "string",
+      "description": "Short error-message"
+    },
+    "error-details": {
+      "type": "string",
+      "description": "Detailed error-message"
+    },
+    "help-url": {
+      "type": "string",
+      "description": "URL for additional resources"
+    }
+  }
+}

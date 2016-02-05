@@ -5,7 +5,7 @@
       "type": "string",
       "description": "Restaurant name"
     },
-    "id": {
+    "restaurantId": {
       "type": "string",
       "description": "Restaurant id"
     },
@@ -19,7 +19,7 @@
     },
     "location": {
       "description": "Location of the restaurant",
-      "$ref": "location"
+      "$ref": "food-crave-location.schema"
     },
     "is_closed": {
       "type": "boolean",
@@ -44,7 +44,7 @@
     "categories": {
       "type": "array",
       "items": {
-        "$ref": "category"
+        "$ref": "string"
       }
     }
   }

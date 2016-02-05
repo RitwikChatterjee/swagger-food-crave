@@ -15,12 +15,12 @@ schemes:
   - https
 
 consumes:
-  - application/xml
   - application/json
+  - application/xml
   
 produces:
-  - application/xml
   - application/json
+  - application/xml
 
 tags:
   - name: restaurants

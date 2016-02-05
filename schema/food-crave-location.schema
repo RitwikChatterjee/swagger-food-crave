@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "display_address": {
+      "type": "array",
+      "description": "Address of the restaurant",
+      "items": {
+        "type": "string"
+      }
+    },
+    "geo-accuracy": {
+      "type": "string",
+      "description": "accuracy of the coordinates provided"
+    },
+    "coordinate": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "string",
+          "description": "latitude coordinates for the restaurant"
+        },
+        "longitude": {
+          "type": "string",
+          "description": "longitude coordinates for the restaurant"
+        }
+      }
+    }
+  }
+}
