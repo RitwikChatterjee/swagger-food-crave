@@ -57,7 +57,7 @@ paths:
         - $ref: '#/parameters/paging-limit'
       responses:
         200:
-          description: Response for successful request
+          description: Response for resources retrieved
           schema: 
             $ref: '#/definitions/collection-response'
         400:
@@ -69,6 +69,31 @@ paths:
         500:
           $ref: '#/responses/internal-error'
 
+  /restaurants/{restaurantId}:
+    get:
+      tags:
+        - restaurants
+      summary: Get a specific restaurant by Id
+      description: Get a specific restaurant by Id
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Unique Id of the restaurant to fetch
+          required: true
+          type: string
+      responses:
+        200: 
+          description: Response for resource retrieved
+          schema:
+            $ref: '#/definitions/item-response'
+        400:
+          $ref: '#/responses/bad-request-error'
+        401:
+          $ref: '#/responses/unauthorized-error'
+        404:
+          $ref: '#/responses/not-found-error'
+        500:
+          $ref: '#/responses/internal-error'
 
 definitions:
   collection-response:
@@ -82,6 +107,18 @@ definitions:
         type: "number"
       total-records: 
         type: "number"
+      data: 
+        type: "array"
+        items: 
+          $ref: './schema/food-crave-restaurant.schema'
+      response-status: 
+        $ref: './schema/response-status.schema'
+
+  item-response:
+    type: "object"
+    required: 
+      - "response-status"
+    properties: 
       data: 
         type: "array"
         items: 
