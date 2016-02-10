@@ -4,7 +4,8 @@ info:
   title: Food-Crave APIs
   description: APIs for the Food Crave App - Swagger version
   contact: 
-    name: ritwik@dell.com
+    name: Ritwik Chatterjee
+    email: ritwik@dell.com
     
   
   
@@ -28,10 +29,16 @@ tags:
     
 paths: 
   /restaurants:
+    parameters:
+      - name: apikey
+        in: header
+        description: API Key to call the API
+        required: true
+        type: string
     get:
       tags:
         - restaurants
-      summary: Collection of restaurants with the given search criteria
+      summary: Collection of restaurants with the given search criteria - summary
       description: Collection of restaurants with the given search criteria
       parameters:
         - name: address
@@ -68,8 +75,16 @@ paths:
           $ref: '#/responses/not-found-error'
         500:
           $ref: '#/responses/internal-error'
+        default:
+          $ref: '#/responses/default-error'
 
   /restaurants/{restaurantId}:
+    parameters:
+      - name: apikey
+        in: header
+        description: API Key to call the API
+        required: true
+        type: string
     get:
       tags:
         - restaurants
@@ -94,6 +109,8 @@ paths:
           $ref: '#/responses/not-found-error'
         500:
           $ref: '#/responses/internal-error'
+        default:
+          $ref: '#/responses/default-error'
 
 definitions:
   collection-response:
@@ -103,10 +120,13 @@ definitions:
     properties: 
       page-size: 
         type: "number"
+        example: 10
       offset: 
         type: "number"
+        example: 0
       total-records: 
         type: "number"
+        example: 20
       data: 
         type: "array"
         items: 
@@ -164,4 +184,7 @@ responses:
     description: Response for other internal error
     schema: 
       $ref: './schema/response-status.schema'
-  
+  default-error:
+    description: Response for other internal error
+    schema: 
+      $ref: './schema/response-status.schema'
