@@ -26,7 +26,7 @@
       ]
     },
     "error-block": {
-      "$ref": "response-status-error-block.schema"
+      "$ref": "./schema/response-status-error-block.schema"
     }
   }
 }
